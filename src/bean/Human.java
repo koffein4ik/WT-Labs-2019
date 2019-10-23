@@ -4,6 +4,7 @@ public abstract class Human {
     private String name;
     private String surname;
     private String phoneNumber;
+    private String passportNumber;
 
     public String getName() {
         return name;

@@ -1,12 +1,13 @@
 package dao;
 
 import bean.User;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class XMLUserDAO implements UserDAO {
@@ -27,33 +28,44 @@ public class XMLUserDAO implements UserDAO {
 
     @Override
     public void saveAllUsers(List<User> users) {
-
-    }
-
-    @Override
-    public List<User> getAllUsers() {
+        XMLEncoder encoder = null;
         try {
-            DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = documentBuilder.parse("./src/XMLStorage/Users.xml");
-            Node root = document.getDocumentElement();
-            NodeList users = root.getChildNodes();
-            for (int i = 0; i < users.getLength(); i++) {
-                Node user = users.item(i);
-                if (user.getNodeType() != Node.TEXT_NODE) {
-                    NodeList userProps = user.getChildNodes();
-                    for (int j = 0; j < userProps.getLength(); j++) {
-                        Node userProp = userProps.item(j);
-                        if (userProp.getNodeType() != Node.TEXT_NODE) {
-                            System.out.println(userProp.getNodeName() + " : " + userProp.getChildNodes().item(0).getTextContent());
-                        }
-                    }
-                }
+            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("./src/XMLStorage/Users.xml")));
+            encoder.writeObject(users.size());
+            for (User u : users) {
+                encoder.writeObject(u);
             }
-
         }
         catch (Exception e) {
             System.out.println(e.toString());
         }
-        return null;
+        finally {
+            if (encoder != null)
+                encoder.close();
+        }
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        XMLDecoder decoder = null;
+        List<User> users = new ArrayList<>();
+        try {
+            decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream("./src/XMLStorage/Users.xml")));
+            int usersCount = (Integer)decoder.readObject();
+            for(int i = 0; i < usersCount; i++) {
+                users.add((User)decoder.readObject());
+            }
+            for (User u : users) {
+                System.out.println(u.getMoneyOnBalance());
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        finally {
+            if (decoder != null)
+                decoder.close();
+        }
+        return users;
     }
 }

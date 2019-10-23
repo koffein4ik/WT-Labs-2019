@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Users>
-    <User>
-        <Nickname>JWalker</Nickname>
-        <Name>Johnnie</Name>
-        <Surname>Walker</Surname>
-    </User>
-    <User>
-        <Nickname>JWalker2</Nickname>
-        <Name>Johnnie2</Name>
-        <Surname>Walker2</Surname>
-    </User>
-</Users>
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
+ <int>1</int>
+ <object class="bean.User">
+  <void property="moneyOnBalance">
+   <int>10000</int>
+  </void>
+  <void property="name">
+   <string>Johnnie</string>
+  </void>
+  <void property="nickname">
+   <string>JWalker</string>
+  </void>
+  <void property="passportNumber">
+   <string>MP2352362</string>
+  </void>
+  <void property="phoneNumber">
+   <string>+3156484964</string>
+  </void>
+  <void property="surname">
+   <string>Walker</string>
+  </void>
+  <void property="tripsCompleted">
+   <int>10</int>
+  </void>
+ </object>
+</java>

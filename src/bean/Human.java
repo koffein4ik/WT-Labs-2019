@@ -6,6 +6,18 @@ public abstract class Human {
     private String phoneNumber;
     private String passportNumber;
 
+    public String getPassportNumber() {
+        return passportNumber;
+    }
+
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }
+
+    public Human() {
+
+    }
+
     public Human(String name, String surname, String phoneNumber, String passportNumber) {
         this.name = name;
         this.surname = surname;

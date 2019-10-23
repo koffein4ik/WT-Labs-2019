@@ -2,6 +2,11 @@ package bean;
 
 public class User extends Human {
     private String nickname;
+    private int moneyOnBalance;
+    private int tripsCompleted;
+
+    public User() {
+    }
 
     public User(String name, String surname, String phoneNumber, String passportNumber, String nickname, int moneyOnBalance, int tripsCompleted) {
         super(name, surname, phoneNumber, passportNumber);
@@ -33,7 +38,4 @@ public class User extends Human {
     public void setTripsCompleted(int tripsCompleted) {
         this.tripsCompleted = tripsCompleted;
     }
-
-    private int moneyOnBalance;
-    private int tripsCompleted;
 }

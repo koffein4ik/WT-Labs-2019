@@ -1,10 +1,18 @@
 package bean;
 
-public class Admin {
+public class Admin extends Human {
     private String nickname;
     private int userRequestsAnswered;
     private int salary;
     private int accessLevel;
+
+    public Admin(String name, String surname, String phoneNumber, String passportNumber, String nickname, int userRequestsAnswered, int salary, int accessLevel) {
+        super(name, surname, phoneNumber, passportNumber);
+        this.nickname = nickname;
+        this.userRequestsAnswered = userRequestsAnswered;
+        this.salary = salary;
+        this.accessLevel = accessLevel;
+    }
 
     public String getNickname() {
         return nickname;

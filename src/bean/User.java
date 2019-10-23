@@ -3,6 +3,13 @@ package bean;
 public class User extends Human {
     private String nickname;
 
+    public User(String name, String surname, String phoneNumber, String passportNumber, String nickname, int moneyOnBalance, int tripsCompleted) {
+        super(name, surname, phoneNumber, passportNumber);
+        this.nickname = nickname;
+        this.moneyOnBalance = moneyOnBalance;
+        this.tripsCompleted = tripsCompleted;
+    }
+
     public String getNickname() {
         return nickname;
     }

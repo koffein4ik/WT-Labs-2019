@@ -6,6 +6,13 @@ public abstract class Human {
     private String phoneNumber;
     private String passportNumber;
 
+    public Human(String name, String surname, String phoneNumber, String passportNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.passportNumber = passportNumber;
+    }
+
     public String getName() {
         return name;
     }

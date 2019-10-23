@@ -12,6 +12,17 @@ public abstract class Vehicle {
     private String color;
     private int paymentPerMinute;
 
+    public Vehicle(int maxSpeed, int weight, int driveRange, String brand, String number, String model, String color, int paymentPerMinute) {
+        this.maxSpeed = maxSpeed;
+        this.weight = weight;
+        this.driveRange = driveRange;
+        this.brand = brand;
+        this.number = number;
+        this.model = model;
+        this.color = color;
+        this.paymentPerMinute = paymentPerMinute;
+    }
+
     public int getPaymentPerMinute() {
         return paymentPerMinute;
     }

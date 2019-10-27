@@ -2,6 +2,7 @@ package bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Parking {
     private String location;
@@ -39,5 +40,21 @@ public class Parking {
 
     public void setVehiclesOnParking(List<Vehicle> vehiclesOnParking) {
         this.vehiclesOnParking = vehiclesOnParking;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Parking parking = (Parking) o;
+        return carCapacity == parking.carCapacity &&
+                truckCapacity == parking.truckCapacity &&
+                location.equals(parking.location) &&
+                Objects.equals(vehiclesOnParking, parking.vehiclesOnParking);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, carCapacity, truckCapacity, vehiclesOnParking);
     }
 }

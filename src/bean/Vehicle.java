@@ -1,6 +1,6 @@
 package bean;
 
-import oracle.jrockit.jfr.StringConstantPool;
+import java.util.Objects;
 
 public abstract class Vehicle {
     private int maxSpeed;
@@ -11,6 +11,10 @@ public abstract class Vehicle {
     private String model;
     private String color;
     private int paymentPerMinute;
+
+    public Vehicle() {
+
+    }
 
     public Vehicle(int maxSpeed, int weight, int driveRange, String brand, String number, String model, String color, int paymentPerMinute) {
         this.maxSpeed = maxSpeed;
@@ -85,5 +89,25 @@ public abstract class Vehicle {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        return maxSpeed == vehicle.maxSpeed &&
+                weight == vehicle.weight &&
+                driveRange == vehicle.driveRange &&
+                paymentPerMinute == vehicle.paymentPerMinute &&
+                brand.equals(vehicle.brand) &&
+                number.equals(vehicle.number) &&
+                model.equals(vehicle.model) &&
+                Objects.equals(color, vehicle.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, number, model, color);
     }
 }

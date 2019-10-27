@@ -4,7 +4,7 @@ import bean.Admin;
 
 import java.util.List;
 
-public class XMLAdminDAO implements AdminDao {
+public class XMLAdminDAO implements AdminDAO {
     @Override
     public void updateAdmin(Admin admin) {
 

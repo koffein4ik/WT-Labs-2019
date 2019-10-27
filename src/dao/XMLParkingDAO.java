@@ -1,10 +1,17 @@
 package dao;
 
+import bean.Parking;
 import bean.Vehicle;
 
 import java.util.List;
 
 public class XMLParkingDAO implements ParkingDAO {
+
+    @Override
+    public void updateParking(Parking oldParking, Parking newParking) {
+
+    }
+
     @Override
     public boolean addVehicleToParking(Vehicle vehicle, bean.Parking parking) {
         return false;

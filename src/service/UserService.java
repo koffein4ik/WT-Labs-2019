@@ -1,10 +1,10 @@
-package dao;
+package service;
 
 import bean.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface UserService {
     void updateUser(User oldUser, User newUser);
     void deleteUser(User user);
     void addUser(User user);

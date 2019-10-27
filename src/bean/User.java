@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.Objects;
+
 public class User extends Human {
     private String nickname;
     private int moneyOnBalance;
@@ -37,5 +39,21 @@ public class User extends Human {
 
     public void setTripsCompleted(int tripsCompleted) {
         this.tripsCompleted = tripsCompleted;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        User user = (User) o;
+        return moneyOnBalance == user.moneyOnBalance &&
+                tripsCompleted == user.tripsCompleted &&
+                nickname.equals(user.nickname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nickname, moneyOnBalance, tripsCompleted);
     }
 }

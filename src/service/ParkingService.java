@@ -1,12 +1,11 @@
-package dao;
+package service;
 
-import bean.Car;
 import bean.Parking;
 import bean.Vehicle;
 
 import java.util.List;
 
-public interface ParkingDAO {
+public interface ParkingService {
     boolean addVehicleToParking(Vehicle vehicle, Parking parking);
     boolean removeVehicleFromParking(Vehicle vehicle, Parking parking);
     List<Vehicle> getVehiclesOnParking(Parking parking);
@@ -15,4 +14,5 @@ public interface ParkingDAO {
     void updateParking(Parking oldParking, Parking newParking);
     void addParking(Parking parking);
     void deleteParking(Parking parking);
+
 }

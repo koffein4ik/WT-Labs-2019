@@ -12,18 +12,34 @@ import java.util.List;
 
 public class XMLUserDAO implements UserDAO {
     @Override
-    public void updateUser(User user) {
-
+    public void updateUser(User oldUser, User newUser) {
+        List<User> users = getAllUsers();
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).equals(oldUser)) {
+                users.remove(i);
+                users.add(i, newUser);
+                saveAllUsers(users);
+                return;
+            }
+        }
     }
 
     @Override
     public void deleteUser(User user) {
-
+        List<User> users = getAllUsers();
+        if (users.contains(user)) {
+            users.remove(user);
+            saveAllUsers(users);
+        }
     }
 
     @Override
     public void addUser(User user) {
-
+        List<User> users = getAllUsers();
+        if (!users.contains(user)) {
+            users.add(user);
+            saveAllUsers(users);
+        }
     }
 
     @Override

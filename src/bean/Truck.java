@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.Objects;
+
 public class Truck extends Vehicle {
     private int cargoCapacity;
 
@@ -26,4 +28,19 @@ public class Truck extends Vehicle {
     }
 
     private int cargoVolume;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Truck truck = (Truck) o;
+        return cargoCapacity == truck.cargoCapacity &&
+                cargoVolume == truck.cargoVolume;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cargoCapacity, cargoVolume);
+    }
 }

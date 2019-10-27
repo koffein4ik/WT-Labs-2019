@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.Objects;
+
 public class Admin extends Human {
     private String nickname;
     private int userRequestsAnswered;
@@ -44,5 +46,22 @@ public class Admin extends Human {
 
     public void setAccessLevel(int accessLevel) {
         this.accessLevel = accessLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Admin admin = (Admin) o;
+        return userRequestsAnswered == admin.userRequestsAnswered &&
+                salary == admin.salary &&
+                accessLevel == admin.accessLevel &&
+                nickname.equals(admin.nickname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nickname, userRequestsAnswered, salary, accessLevel);
     }
 }

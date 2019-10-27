@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.Objects;
+
 public class Car extends Vehicle {
     private int PassengerCapacity;
     private int accelerationTime;
@@ -24,5 +26,20 @@ public class Car extends Vehicle {
 
     public void setAccelerationTime(int accelerationTime) {
         this.accelerationTime = accelerationTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Car car = (Car) o;
+        return PassengerCapacity == car.PassengerCapacity &&
+                accelerationTime == car.accelerationTime;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), PassengerCapacity, accelerationTime);
     }
 }

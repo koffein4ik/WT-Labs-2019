@@ -1,4 +1,7 @@
+import bean.Car;
+import bean.Parking;
 import bean.User;
+import dao.XMLParkingDAO;
 import dao.XMLUserDAO;
 
 import java.util.ArrayList;
@@ -6,11 +9,18 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        XMLUserDAO userDAO = new XMLUserDAO();
-        User us = new User("Johnnie", "Walker", "+3156484964", "MP2352362", "JWalker", 10000, 10);
-        List<User> users = new ArrayList<>();
-        users.add(us);
-        userDAO.saveAllUsers(users);
-        userDAO.getAllUsers();
+        XMLParkingDAO pdao = new XMLParkingDAO();
+        Car car = new Car();
+        car.setBrand("Audi");
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+        Parking p = new Parking();
+        p.setLocation("New York");
+        p.setVehiclesOnParking(new ArrayList<>(cars));
+        List<Parking> plist = new ArrayList<>();
+        plist.add(p);
+        pdao.saveAllParkings(plist);
+        plist = pdao.getAllParkings();
+        System.out.println(plist.get(0).getVehiclesOnParking().get(0).getBrand());
     }
 }

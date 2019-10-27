@@ -71,9 +71,6 @@ public class XMLUserDAO implements UserDAO {
             for(int i = 0; i < usersCount; i++) {
                 users.add((User)decoder.readObject());
             }
-            for (User u : users) {
-                System.out.println(u.getMoneyOnBalance());
-            }
         }
         catch (Exception e) {
             System.out.println(e.toString());

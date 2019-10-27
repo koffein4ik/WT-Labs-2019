@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Parking {
+public class Parking implements Comparable<Parking> {
     private String location;
     private int carCapacity;
     private int truckCapacity;
     private List<Vehicle> vehiclesOnParking = new ArrayList<>();
+
+    public Parking() { };
 
     public String getLocation() {
         return location;
@@ -56,5 +58,18 @@ public class Parking {
     @Override
     public int hashCode() {
         return Objects.hash(location, carCapacity, truckCapacity, vehiclesOnParking);
+    }
+
+    @Override
+    public int compareTo(Parking o) {
+        return location.compareTo(o.getLocation());
+    }
+
+    @Override
+    public String toString() {
+        return "Location='" + location + '\'' +
+                ", carCapacity=" + carCapacity +
+                ", truckCapacity=" + truckCapacity +
+                ", vehiclesOnParking=" + vehiclesOnParking;
     }
 }

@@ -2,9 +2,11 @@ package bean;
 
 import java.util.Objects;
 
-public class Driver extends Human {
+public class Driver extends Human implements Comparable<Driver>{
     private int salary;
     private int hoursWorkedThisMonth;
+
+    public Driver() { };
 
     public Driver(String name, String surname, String phoneNumber, String passportNumber, int salary, int hoursWorkedThisMonth) {
         super(name, surname, phoneNumber, passportNumber);
@@ -41,5 +43,17 @@ public class Driver extends Human {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), salary, hoursWorkedThisMonth);
+    }
+
+    @Override
+    public int compareTo(Driver o) {
+        return getSurname().compareTo(o.getSurname());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", salary=" + salary +
+                ", hoursWorkedThisMonth=" + hoursWorkedThisMonth;
     }
 }

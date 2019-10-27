@@ -2,7 +2,7 @@ package bean;
 
 import java.util.Objects;
 
-public class User extends Human {
+public class User extends Human implements Comparable<User> {
     private String nickname;
     private int moneyOnBalance;
     private int tripsCompleted;
@@ -55,5 +55,18 @@ public class User extends Human {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), nickname, moneyOnBalance, tripsCompleted);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", nickname='" + nickname + '\'' +
+                ", moneyOnBalance=" + moneyOnBalance +
+                ", tripsCompleted=" + tripsCompleted;
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return nickname.compareTo(o.nickname);
     }
 }

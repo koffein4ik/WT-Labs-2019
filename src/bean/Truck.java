@@ -2,8 +2,11 @@ package bean;
 
 import java.util.Objects;
 
-public class Truck extends Vehicle {
+public class Truck extends Vehicle implements Comparable<Truck> {
     private int cargoCapacity;
+    private int cargoVolume;
+
+    public Truck() { };
 
     public Truck(int maxSpeed, int weight, int driveRange, String brand, String number, String model, String color, int paymentPerMinute, int cargoCapacity, int cargoVolume) {
         super(maxSpeed, weight, driveRange, brand, number, model, color, paymentPerMinute);
@@ -27,8 +30,6 @@ public class Truck extends Vehicle {
         this.cargoVolume = cargoVolume;
     }
 
-    private int cargoVolume;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,5 +43,17 @@ public class Truck extends Vehicle {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), cargoCapacity, cargoVolume);
+    }
+
+    @Override
+    public int compareTo(Truck o) {
+        return Integer.compare(cargoCapacity, o.getCargoCapacity());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", cargoCapacity=" + cargoCapacity +
+                ", cargoVolume=" + cargoVolume;
     }
 }

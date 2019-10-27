@@ -66,4 +66,13 @@ public abstract class Human {
     public int hashCode() {
         return Objects.hash(name, surname, phoneNumber, passportNumber);
     }
+
+    @Override
+    public String toString() {
+        return
+                "Name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", passportNumber='" + passportNumber + '\'';
+    }
 }

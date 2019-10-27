@@ -110,4 +110,16 @@ public abstract class Vehicle {
     public int hashCode() {
         return Objects.hash(brand, number, model, color);
     }
+
+    @Override
+    public String toString() {
+        return "MaxSpeed=" + maxSpeed +
+                ", weight=" + weight +
+                ", driveRange=" + driveRange +
+                ", brand='" + brand + '\'' +
+                ", number='" + number + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", paymentPerMinute=" + paymentPerMinute;
+    }
 }

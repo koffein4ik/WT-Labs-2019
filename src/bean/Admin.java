@@ -2,11 +2,13 @@ package bean;
 
 import java.util.Objects;
 
-public class Admin extends Human {
+public class Admin extends Human implements Comparable<Admin> {
     private String nickname;
     private int userRequestsAnswered;
     private int salary;
     private int accessLevel;
+
+    public Admin() { };
 
     public Admin(String name, String surname, String phoneNumber, String passportNumber, String nickname, int userRequestsAnswered, int salary, int accessLevel) {
         super(name, surname, phoneNumber, passportNumber);
@@ -63,5 +65,19 @@ public class Admin extends Human {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), nickname, userRequestsAnswered, salary, accessLevel);
+    }
+
+    @Override
+    public int compareTo(Admin o) {
+        return nickname.compareTo(o.nickname);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", nickname='" + nickname + '\'' +
+                ", userRequestsAnswered=" + userRequestsAnswered +
+                ", salary=" + salary +
+                ", accessLevel=" + accessLevel;
     }
 }

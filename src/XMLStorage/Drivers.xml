@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
+ <int>1</int>
+ <object class="bean.Driver">
+  <void property="hoursWorkedThisMonth">
+   <int>120</int>
+  </void>
+  <void property="name">
+   <string>Sam</string>
+  </void>
+  <void property="passportNumber">
+   <string>US24634987</string>
+  </void>
+  <void property="phoneNumber">
+   <string>+2626314387</string>
+  </void>
+  <void property="salary">
+   <int>2600</int>
+  </void>
+  <void property="surname">
+   <string>Smith</string>
+  </void>
+ </object>
+</java>

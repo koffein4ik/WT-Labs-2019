@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_60" class="java.beans.XMLDecoder">
- <int>1</int>
+ <int>2</int>
  <object class="bean.User">
   <void property="moneyOnBalance">
-   <int>10000</int>
+   <int>10001</int>
   </void>
   <void property="name">
    <string>Johnnie</string>
@@ -22,6 +22,29 @@
   </void>
   <void property="tripsCompleted">
    <int>10</int>
+  </void>
+ </object>
+ <object class="bean.User">
+  <void property="moneyOnBalance">
+   <int>999999</int>
+  </void>
+  <void property="name">
+   <string>John</string>
+  </void>
+  <void property="nickname">
+   <string>JSWeet</string>
+  </void>
+  <void property="passportNumber">
+   <string>US32526</string>
+  </void>
+  <void property="phoneNumber">
+   <string>+6498451345</string>
+  </void>
+  <void property="surname">
+   <string>Sweety</string>
+  </void>
+  <void property="tripsCompleted">
+   <int>125</int>
   </void>
  </object>
 </java>

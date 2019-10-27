@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
+ <int>1</int>
+ <object class="bean.Admin">
+  <void property="accessLevel">
+   <int>5</int>
+  </void>
+  <void property="name">
+   <string>Chandler</string>
+  </void>
+  <void property="nickname">
+   <string>Chbng</string>
+  </void>
+  <void property="passportNumber">
+   <string>US236236</string>
+  </void>
+  <void property="phoneNumber">
+   <string>+26236139-36</string>
+  </void>
+  <void property="salary">
+   <int>5000</int>
+  </void>
+  <void property="surname">
+   <string>Bing</string>
+  </void>
+  <void property="userRequestsAnswered">
+   <int>200</int>
+  </void>
+ </object>
+</java>

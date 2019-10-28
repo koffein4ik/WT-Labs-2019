@@ -1,5 +1,6 @@
 package view;
 
+import bean.Parking;
 import controller.*;
 
 import java.util.Scanner;
@@ -36,7 +37,8 @@ public class StartView {
                     truckController.showOptions();
                 }
                 case 6: {
-                    break;
+                    ParkingController parkingController = new ParkingController();
+                    parkingController.showOptions();
                 }
                 case 7: {
                     exit = true;

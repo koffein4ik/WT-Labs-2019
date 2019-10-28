@@ -1,6 +1,9 @@
 package controller;
 
+import bean.Parking;
 import bean.Truck;
+import bean.Vehicle;
+import service.ParkingService;
 import service.ServiceFactory;
 import service.TruckService;
 import view.Display;
@@ -12,7 +15,8 @@ import java.util.List;
 
 public class TruckController {
     private Display display = new Display().getDisplay();
-    private List<Truck> trucks = new ArrayList<>();
+    private List<Truck> trucks;
+    private List<Parking> parkings;
 
     public void showOptions() {
         boolean exit = false;
@@ -20,6 +24,8 @@ public class TruckController {
         ServiceFactory factory = new ServiceFactory();
         TruckService truckService = factory.getTruckService();
         trucks = truckService.getAllTrucks();
+        ParkingService parkingService = factory.getParkingService();
+        parkings = parkingService.getAllParkings();
 
         while (!exit) {
             display.displayResponse("1. Show all Trucks \n2. Edit Truck \n3. Sort Trucks \n4. Add new Truck \n" +
@@ -79,12 +85,15 @@ public class TruckController {
             return;
         }
         Truck currTruck = trucks.get(number);
+        Truck oldTruck = new Truck(currTruck.getMaxSpeed(), currTruck.getWeight(), currTruck.getDriveRange(), currTruck.getBrand(),
+                currTruck.getNumber(), currTruck.getModel(), currTruck.getColor(), currTruck.getPaymentPerMinute(),
+                currTruck.getCargoCapacity(), currTruck.getCargoVolume());
         display.displayResponse(currTruck.toString());
         boolean exit = false;
         while (!exit) {
             display.displayResponse("What you want to edit: \n1. Max speed \n2. Weight\n3. Drive range\n4. Brand\n" +
                     "5. Model\n6. Color\n7. Payment per minute\n8. Cargo capacity\n9. Cargo volume\n" +
-                    "10. Exit");
+                    "10. Number\n11. Exit");
             switch (View.getUserChoice()) {
                 case 1: {
                     System.out.println("Enter new max speed");
@@ -132,11 +141,27 @@ public class TruckController {
                     break;
                 }
                 case 10: {
+                    System.out.println("Enter new truck number");
+                    currTruck.setNumber(View.getUserString());
+                    break;
+                }
+                case 11: {
                     exit = true;
                     break;
                 }
                 default: {
                     display.displayResponse("Incorrect option chosen");
+                }
+            }
+        }
+        for (Parking p : parkings) {
+            List<Vehicle> vehiclesOnParking = p.getVehiclesOnParking();
+            for (int i = 0; i < vehiclesOnParking.size(); i++) {
+                if (vehiclesOnParking.get(i) instanceof Truck) {
+                    Truck carOnParking = (Truck)vehiclesOnParking.get(i);
+                    if (carOnParking.equals(oldTruck)) {
+                        vehiclesOnParking.set(i, currTruck);
+                    }
                 }
             }
         }
@@ -157,6 +182,8 @@ public class TruckController {
         currTruck.setModel(View.getUserString());
         System.out.println("Enter new color");
         currTruck.setColor(View.getUserString());
+        System.out.println("Enter number");
+        currTruck.setNumber(View.getUserString());
         System.out.println("Enter new value for payment per minute");
         currTruck.setPaymentPerMinute(View.getUserChoice());
         System.out.println("Enter new value for cargo volume");
@@ -171,15 +198,31 @@ public class TruckController {
         ServiceFactory factory = new ServiceFactory();
         TruckService truckService = factory.getTruckService();
         truckService.saveAllTrucks(trucks);
+        ParkingService parkingService = factory.getParkingService();
+        parkingService.saveAllParkings(parkings);
         display.displayResponse("Save successfully");
     }
 
     private void deleteTruck() {
         System.out.println("Enter number of the truck you want to delete");
         String number = View.getUserString();
+        Truck truckToRemove = null;
         for (Truck t : trucks) {
-            if (t.getNumber().equals(number))
+            if (t.getNumber().equals(number)) {
+                truckToRemove = t;
                 trucks.remove(t);
+            }
+        }
+        for (Parking p : parkings) {
+            List<Vehicle> vehiclesOnParking = p.getVehiclesOnParking();
+            for(Vehicle v : vehiclesOnParking) {
+                if (v instanceof Truck) {
+                    Truck truckOnParking = (Truck)v;
+                    if (truckOnParking.equals(truckToRemove)) {
+                        vehiclesOnParking.remove(truckToRemove);
+                    }
+                }
+            }
         }
     }
 

@@ -2,7 +2,7 @@ package bean;
 
 import java.util.Objects;
 
-public class Car extends Vehicle implements Comparable<Car> {
+public class Car extends Vehicle implements Comparable<Car>, Cloneable {
     private int PassengerCapacity;
     private int accelerationTime;
 

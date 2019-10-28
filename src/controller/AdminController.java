@@ -83,7 +83,7 @@ public class AdminController {
         boolean exit = false;
         while (!exit) {
             display.displayResponse("What you want to edit: \n1. Name \n2. Surname\n3. Phone Number\n4. Passport Number\n" +
-                    "5. Nickname\n6. User requests answered\n 7. Salary\n8. Access level\n9. Exit");
+                    "5. Nickname\n6. User requests answered\n7. Salary\n8. Access level\n9. Exit");
             switch (View.getUserChoice()) {
                 case 1: {
                     System.out.println("Enter new name");

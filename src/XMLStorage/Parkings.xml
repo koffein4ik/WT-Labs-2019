@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_60" class="java.beans.XMLDecoder">
- <int>1</int>
+ <int>2</int>
  <object class="bean.Parking" id="Parking0">
+  <void property="carCapacity">
+   <int>20</int>
+  </void>
   <void property="location">
    <string>New York</string>
   </void>
   <void property="vehiclesOnParking">
    <void method="add">
     <object class="bean.Car">
+     <void property="accelerationTime">
+      <int>3</int>
+     </void>
      <void property="brand">
       <string>Audi</string>
      </void>
+     <void property="color">
+      <string>Blue</string>
+     </void>
+     <void property="driveRange">
+      <int>500</int>
+     </void>
+     <void property="maxSpeed">
+      <int>325</int>
+     </void>
+     <void property="model">
+      <string>RS7</string>
+     </void>
+     <void property="number">
+      <string>AB4321-7</string>
+     </void>
+     <void property="passengerCapacity">
+      <int>4</int>
+     </void>
+     <void property="paymentPerMinute">
+      <int>2</int>
+     </void>
+     <void property="weight">
+      <int>2000</int>
+     </void>
     </object>
    </void>
+  </void>
+ </object>
+ <object class="bean.Parking">
+  <void property="carCapacity">
+   <int>20</int>
+  </void>
+  <void property="location">
+   <string>Minsk, Pushkina 22</string>
+  </void>
+  <void property="truckCapacity">
+   <int>5</int>
   </void>
  </object>
 </java>

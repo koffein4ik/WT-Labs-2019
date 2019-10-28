@@ -1,4 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_60" class="java.beans.XMLDecoder">
- <int>0</int>
+ <int>3</int>
+ <object class="bean.Car">
+  <void property="accelerationTime">
+   <int>3</int>
+  </void>
+  <void property="brand">
+   <string>Audi</string>
+  </void>
+  <void property="color">
+   <string>Blue</string>
+  </void>
+  <void property="driveRange">
+   <int>500</int>
+  </void>
+  <void property="maxSpeed">
+   <int>325</int>
+  </void>
+  <void property="model">
+   <string>RS7</string>
+  </void>
+  <void property="number">
+   <string>AB4321-7</string>
+  </void>
+  <void property="passengerCapacity">
+   <int>4</int>
+  </void>
+  <void property="paymentPerMinute">
+   <int>2</int>
+  </void>
+  <void property="weight">
+   <int>2000</int>
+  </void>
+ </object>
+ <object class="bean.Car">
+  <void property="accelerationTime">
+   <int>3</int>
+  </void>
+  <void property="brand">
+   <string>BMW</string>
+  </void>
+  <void property="color">
+   <string>White</string>
+  </void>
+  <void property="driveRange">
+   <int>550</int>
+  </void>
+  <void property="maxSpeed">
+   <int>315</int>
+  </void>
+  <void property="model">
+   <string>m5</string>
+  </void>
+  <void property="number">
+   <string>BM-1456-1</string>
+  </void>
+  <void property="passengerCapacity">
+   <int>2</int>
+  </void>
+  <void property="paymentPerMinute">
+   <int>2</int>
+  </void>
+  <void property="weight">
+   <int>2100</int>
+  </void>
+ </object>
+ <object class="bean.Car">
+  <void property="accelerationTime">
+   <int>2</int>
+  </void>
+  <void property="brand">
+   <string>Tesla</string>
+  </void>
+  <void property="color">
+   <string>Black</string>
+  </void>
+  <void property="driveRange">
+   <int>400</int>
+  </void>
+  <void property="maxSpeed">
+   <int>250</int>
+  </void>
+  <void property="model">
+   <string>Model S</string>
+  </void>
+  <void property="passengerCapacity">
+   <int>4</int>
+  </void>
+  <void property="paymentPerMinute">
+   <int>1</int>
+  </void>
+  <void property="weight">
+   <int>2200</int>
+  </void>
+ </object>
 </java>

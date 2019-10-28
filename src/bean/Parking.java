@@ -69,7 +69,6 @@ public class Parking implements Comparable<Parking> {
     public String toString() {
         return "Location='" + location + '\'' +
                 ", carCapacity=" + carCapacity +
-                ", truckCapacity=" + truckCapacity +
-                ", vehiclesOnParking=" + vehiclesOnParking;
+                ", truckCapacity=" + truckCapacity;
     }
 }

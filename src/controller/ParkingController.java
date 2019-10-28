@@ -17,6 +17,10 @@ public class ParkingController {
     private Display display = new Display().getDisplay();
     private List<Parking> parkings = new ArrayList<>();
 
+    /**
+     * Shows all options all available
+     * actions to do with parkings
+     */
     public void showOptions() {
         boolean exit = false;
 
@@ -67,12 +71,18 @@ public class ParkingController {
         }
     }
 
+    /**
+     * Shows list of all parkings
+     */
     private void showParkings() {
         for (int i = 0; i < parkings.size(); i++) {
             System.out.println((i + 1) + ". " + parkings.get(i).toString());
         }
     }
 
+    /**
+     * Menu for editinig specified parking
+     */
     private void editParking() {
         display.displayResponse("Enter number of parking you want to edit");
         int number = View.getUserChoice();
@@ -128,6 +138,10 @@ public class ParkingController {
         System.out.println("Edited successfully");
     }
 
+    /**
+     * Shows vehicles from specified parking
+     * @param p Parking from which you want to show vehicles
+     */
     private void showVehicleOnParking(Parking p) {
         List<Vehicle> vehiclesOnParking = p.getVehiclesOnParking();
         for (int i = 0; i < vehiclesOnParking.size(); i++) {
@@ -140,6 +154,11 @@ public class ParkingController {
         }
     }
 
+    /**
+     * Adds new vehicle from the available vehicles to the
+     * specified parking
+     * @param currParking Parking to which you want to add vehicle
+     */
     private void addNewVehicleToParking(Parking currParking) {
         ServiceFactory factory = new ServiceFactory();
         List<Vehicle> availableVehicles = new ArrayList<>(factory.getCarService().getAllCars());
@@ -195,6 +214,11 @@ public class ParkingController {
         }
     }
 
+    /**
+     * Shows list of vehicles on parking and removes chosen
+     * vehicle
+     * @param p Parking you want to remove vehicle from
+     */
     private void removeVehicleFromThisParking(Parking p) {
         System.out.println("Vehicles on parking: ");
         List<Vehicle> vehicles = p.getVehiclesOnParking();
@@ -218,6 +242,10 @@ public class ParkingController {
         }
     }
 
+    /**
+     * Adds new parking with specified
+     * parameters to list of parkings
+     */
     private void addParking() {
         Parking currParking = new Parking();
         System.out.println("Enter location");
@@ -230,6 +258,9 @@ public class ParkingController {
         display.displayResponse("Added successfully");
     }
 
+    /**
+     * Saves all parkings using ParkingService
+     */
     private void saveParkings() {
         ServiceFactory factory = new ServiceFactory();
         ParkingService parkingService = factory.getParkingService();
@@ -237,6 +268,9 @@ public class ParkingController {
         display.displayResponse("Saved successfully");
     }
 
+    /**
+     * Deletes parking with specified location
+     */
     private void deleteParking() {
         System.out.println("Enter location of the parking you want to delete");
         String location = View.getUserString();
@@ -246,6 +280,10 @@ public class ParkingController {
         }
     }
 
+    /**
+     * Allows you to find parkings with
+     * specified location/car capacity
+     */
     private void searchParking() {
         System.out.println("How do you want to search: \n1. By location\n2. By car capacity");
         switch (View.getUserChoice()) {

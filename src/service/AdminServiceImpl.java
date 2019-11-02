@@ -1,45 +1,74 @@
 package service;
 
 import bean.Admin;
+import dao.DAOException;
 import dao.DAOFactory;
 import dao.AdminDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
     @Override
-    public void updateAdmin(Admin oldAdmin, Admin newAdmin) {
+    public void updateAdmin(Admin oldAdmin, Admin newAdmin) throws ServiceException {
         DAOFactory factory = DAOFactory.getFactory();
         AdminDAO adminDAO = factory.getAdminDAO();
-        adminDAO.updateAdmin(oldAdmin, newAdmin);
+        try {
+            adminDAO.updateAdmin(oldAdmin, newAdmin);
+        }
+        catch (DAOException daoException) {
+            throw new ServiceException(daoException);
+        }
     }
 
     @Override
-    public void deleteAdmin(Admin admin) {
+    public void deleteAdmin(Admin admin) throws ServiceException {
         DAOFactory factory = DAOFactory.getFactory();
         AdminDAO adminDAO = factory.getAdminDAO();
-        adminDAO.deleteAdmin(admin);
+        try {
+            adminDAO.deleteAdmin(admin);
+        }
+        catch (DAOException daoException) {
+            throw new ServiceException(daoException);
+        }
     }
 
     @Override
-    public void addAdmin(Admin admin) {
+    public void addAdmin(Admin admin) throws ServiceException {
         DAOFactory factory = DAOFactory.getFactory();
         AdminDAO adminDAO = factory.getAdminDAO();
-        adminDAO.addAdmin(admin);
+        try {
+            adminDAO.addAdmin(admin);
+        }
+        catch (DAOException daoException) {
+            throw new ServiceException(daoException);
+        }
     }
 
     @Override
-    public void saveAllAdmins(List<Admin> admins) {
+    public void saveAllAdmins(List<Admin> admins) throws ServiceException {
         DAOFactory factory = DAOFactory.getFactory();
         AdminDAO adminDAO = factory.getAdminDAO();
-        adminDAO.saveAllAdmins(admins);
+        try {
+            adminDAO.saveAllAdmins(admins);
+        }
+        catch (DAOException daoException) {
+            throw new ServiceException(daoException);
+        }
     }
 
     @Override
-    public List<Admin> getAllAdmins() {
+    public List<Admin> getAllAdmins() throws ServiceException {
         DAOFactory factory = DAOFactory.getFactory();
         AdminDAO adminDAO = factory.getAdminDAO();
-        return adminDAO.getAllAdmins();
+        List<Admin> admins = null;
+        try {
+            admins = adminDAO.getAllAdmins();
+        }
+        catch (DAOException daoException) {
+            throw new ServiceException(daoException);
+        }
+        return admins == null ? new ArrayList<>() : admins;
     }
 }
 

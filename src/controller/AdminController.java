@@ -1,6 +1,8 @@
 package controller;
 
 import bean.Admin;
+import dao.DAOException;
+import service.ServiceException;
 import service.ServiceFactory;
 import service.AdminService;
 import view.Display;
@@ -19,7 +21,14 @@ public class AdminController {
 
         ServiceFactory factory = new ServiceFactory();
         AdminService adminService = factory.getAdminService();
-        admins = adminService.getAllAdmins();
+        try {
+            admins = adminService.getAllAdmins();
+        }
+        catch (ServiceException serviceException) {
+            System.out.println(serviceException.toString());
+            System.out.println("Error loading admins list");
+            return;
+        }
 
         while (!exit) {
             display.displayResponse("1. Show all Admins \n2. Edit Admin \n3. Sort Admins \n4. Add new Admin \n" +
@@ -162,8 +171,16 @@ public class AdminController {
     private void saveAdmins() {
         ServiceFactory factory = new ServiceFactory();
         AdminService adminService = factory.getAdminService();
-        adminService.saveAllAdmins(admins);
-        display.displayResponse("Save successfully");
+        boolean saveError = false;
+        try {
+            adminService.saveAllAdmins(admins);
+        }
+        catch (ServiceException serviceException) {
+            System.out.println(serviceException.toString());
+            saveError = true;
+        }
+        if (!saveError)
+            display.displayResponse("Save successfully");
     }
 
     private void deleteAdmin() {

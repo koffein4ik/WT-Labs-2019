@@ -5,9 +5,9 @@ import bean.Admin;
 import java.util.List;
 
 public interface AdminDAO {
-    void updateAdmin(Admin oldAdmin, Admin newAdmin);
-    void deleteAdmin(Admin admin);
-    void addAdmin(Admin admin);
-    void saveAllAdmins(List<Admin> admins);
-    List<Admin> getAllAdmins();
+    void updateAdmin(Admin oldAdmin, Admin newAdmin) throws DAOException;
+    void deleteAdmin(Admin admin) throws DAOException;
+    void addAdmin(Admin admin) throws DAOException;
+    void saveAllAdmins(List<Admin> admins) throws DAOException;
+    List<Admin> getAllAdmins() throws DAOException;
 }
